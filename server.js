@@ -7,6 +7,7 @@ app.get("/order/:id", async (req, res) => {
     await axios.patch(`https://api-zerot.onrender.com/order/${req.params.id}`, {
       status: "success",
     });
+
     const html = `
     <!DOCTYPE html>
 <html lang="en">
@@ -207,7 +208,7 @@ app.get("/order/:id", async (req, res) => {
 </body>
 </html>
     `;
-    res.send(html);
+    res.status(200).send(html);
   } catch (error) {
     console.error("Error:", error.message);
     res.status(500).json({ error: "Internal Server Error" });
