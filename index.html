@@ -6,11 +6,23 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css"
     />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.2.1/axios.min.js"></script>
 
     <style>
       .qr-code {
         max-width: 200px;
         margin: 10px;
+      }
+      .success {
+        max-width: 200px;
+        height: auto;
+        width: 100%;
+      }
+      .display-none {
+        display: none;
+      }
+      .display-block {
+        display: block;
       }
     </style>
 
@@ -23,6 +35,10 @@
         <!-- Get a Placeholder image initially,
        this will change according to the
        data entered later -->
+        <img
+          src="https://ortuk.org/wp-content/themes/ort/images/success-img.png"
+          class="success img-thumbnail img-responsive"
+        />
         <img
           src="https://chart.googleapis.com/chart?cht=qr&chl=Hello+World&chs=160x160&chld=L|0"
           class="qr-code img-thumbnail img-responsive"
@@ -41,6 +57,7 @@
               maxlength="60"
               class="form-control"
               id="content"
+              name="content"
               placeholder="Enter content"
             />
           </div>
@@ -56,34 +73,8 @@
         </div>
       </div>
     </div>
+
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
-
-    <script>
-      // Function to HTML encode the text
-      // This creates a new hidden element,
-      // inserts the given text into it
-      // and outputs it out as HTML
-      function htmlEncode(value) {
-        return $("<div/>").text(value).html();
-      }
-
-      $(function () {
-        // Specify an onclick function
-        // for the generate button
-        $("#generate").click(function () {
-          // Generate the link that would be
-          // used to generate the QR Code
-          // with the given data
-          let finalURL =
-            "https://chart.googleapis.com/chart?cht=qr&chl=" +
-            htmlEncode($("#content").val()) +
-            "&chs=160x160&chld=L|0";
-
-          // Replace the src of the image with
-          // the QR code image
-          $(".qr-code").attr("src", finalURL);
-        });
-      });
-    </script>
+    <script src="./index.js"></script>
   </body>
 </html>
